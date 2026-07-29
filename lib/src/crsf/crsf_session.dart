@@ -133,8 +133,7 @@ class CrsfSession {
 
   int? get activeDeviceId => _activeDeviceId;
   ElrsCommandState? get commandState => _commandState;
-  List<ElrsField> get elrsFields =>
-      List<ElrsField>.unmodifiable(_elrsFields);
+  List<ElrsField> get elrsFields => List<ElrsField>.unmodifiable(_elrsFields);
   bool get isRcSending => _rcSendTimer?.isActive ?? false;
   double get rcSendHz => _rcSendHz;
   List<int> get rcChannels => List<int>.unmodifiable(_rcChannels);
@@ -183,8 +182,6 @@ class CrsfSession {
       chunk: chunk,
     );
   }
-
-  void requestField1({int? deviceId, int chunk = 0}) => requestField(fieldId: 1, deviceId: deviceId, chunk: chunk);
 
   /// 加载指定设备的全部设置字段。
   Future<List<ElrsField>> loadDeviceSettings({
@@ -468,10 +465,11 @@ class CrsfSession {
     required int currentDeviceId,
     required int currentDeviceFieldCount,
   }) {
-    final otherDevices = _devices.values
-        .where((device) => device.deviceId != currentDeviceId)
-        .toList()
-      ..sort((a, b) => a.deviceId.compareTo(b.deviceId));
+    final otherDevices =
+        _devices.values
+            .where((device) => device.deviceId != currentDeviceId)
+            .toList()
+          ..sort((a, b) => a.deviceId.compareTo(b.deviceId));
     if (otherDevices.isEmpty) return const <ElrsField>[];
 
     final folderId = currentDeviceFieldCount + 1;
@@ -575,7 +573,8 @@ class CrsfSession {
     required int handsetId,
     required int fieldId,
     required int status,
-  }) => push(crsfTypeParameterWrite, <int>[deviceId, handsetId, fieldId, status]);
+  }) =>
+      push(crsfTypeParameterWrite, <int>[deviceId, handsetId, fieldId, status]);
 
   void requestLinkStats({int? deviceId, int? handsetId}) =>
       push(crsfTypeParameterWrite, <int>[
@@ -806,7 +805,10 @@ class CrsfSession {
     if (chunk.chunksRemaining > 0) return;
 
     _chunkBuffers.remove(key);
-    final parsed = CrsfParser.parseField(fieldId: chunk.fieldId, data: Uint8List.fromList(buffer));
+    final parsed = CrsfParser.parseField(
+      fieldId: chunk.fieldId,
+      data: Uint8List.fromList(buffer),
+    );
     if (parsed == null) return;
 
     final index = _elrsFields.indexWhere((field) => field.id == parsed.id);

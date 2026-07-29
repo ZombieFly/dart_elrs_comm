@@ -15,11 +15,8 @@ class CrsfFrame {
   final Uint8List payload;
 
   /// 将帧序列化为完整字节（含地址、长度、类型、payload、CRC）。
-  Uint8List toBytes() => CrsfFrameBuilder.build(
-    address: address,
-    type: type,
-    payload: payload,
-  );
+  Uint8List toBytes() =>
+      CrsfFrameBuilder.build(address: address, type: type, payload: payload);
 }
 
 /// CRSF 帧构建工具。

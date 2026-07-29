@@ -69,7 +69,10 @@ class CrsfParser {
   }
 
   /// 解析单个 ELRS 字段。
-  static ElrsField? parseField({required int fieldId, required Uint8List data}) {
+  static ElrsField? parseField({
+    required int fieldId,
+    required Uint8List data,
+  }) {
     if (data.length < 3) return null;
 
     final parentByte = data[0];
@@ -133,8 +136,7 @@ class CrsfParser {
         }
       case ElrsFieldKind.command:
         field.commandStatus = offset < data.length ? data[offset] : 0;
-        field.commandTimeout =
-            offset + 1 < data.length ? data[offset + 1] : 0;
+        field.commandTimeout = offset + 1 < data.length ? data[offset + 1] : 0;
         field.stringValue = _readCString(data, offset + 2).$1;
       case ElrsFieldKind.folder:
       case ElrsFieldKind.back:
