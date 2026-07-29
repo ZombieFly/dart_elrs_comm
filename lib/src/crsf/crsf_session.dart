@@ -254,18 +254,6 @@ class CrsfSession {
     }
   }
 
-  /// 旧方法名，已废弃，请使用 [loadDeviceSettings]。
-  @Deprecated('Use loadDeviceSettings instead')
-  Future<List<ElrsField>> loadTxSettings({
-    int deviceId = crsfAddressTxModule,
-    Duration timeout = const Duration(milliseconds: 100),
-    void Function(int loaded, int total)? onProgress,
-  }) => loadDeviceSettings(
-    deviceId: deviceId,
-    timeout: timeout,
-    onProgress: onProgress,
-  );
-
   Future<void> setIntFieldValue({
     required ElrsField field,
     required int value,
