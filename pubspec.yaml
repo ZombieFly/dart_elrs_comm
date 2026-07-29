@@ -1,5 +1,5 @@
 name: elrs_comm
-description: "A new Flutter package project."
+description: "A Dart package for CRSF/ELRS serial communication with pluggable serial port backends."
 version: 0.0.1
 homepage:
 
