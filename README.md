@@ -103,7 +103,11 @@ void main() async {
 | ---------------- | ----------- |
 | `SerialPort`     | Interface you implement to provide serial I/O |
 | `SerialConfig`   | Baud rate, data bits, stop bits, parity, flow control |
+| `SerialException` | Exception type for serial errors |
 | `CrsfSession`    | Main entry point for CRSF/ELRS communication |
+| `CrsfFrame`      | Represents a parsed or built CRSF frame |
+| `CrsfFrameBuilder` | Build frames, pack RC channels, compute CRC-8 |
+| `CrsfParser`     | Parse DeviceInfo, ParameterChunk, ELRS Status, and fields |
 | `rcChannelsPack` | Pack 16 RC channels into a CRSF RC_CHANNELS_PACKED frame |
 | `ElrsField`      | Represents a single ELRS setting field |
 | `ElrsCommandState` | Represents an active command dialog state |
