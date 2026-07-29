@@ -1,3 +1,3 @@
-export 'src/crsf_session.dart';
-export 'src/rc_channel_constants.dart';
-export 'src/serial_interface.dart';
+export 'src/crsf/crsf.dart';
+export 'src/rc/rc.dart';
+export 'src/serial/serial.dart';

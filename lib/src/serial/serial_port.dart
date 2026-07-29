@@ -1,37 +1,11 @@
 import 'dart:async';
 import 'dart:typed_data';
 
-/// 串口连接配置。
-class SerialConfig {
-  const SerialConfig({
-    this.baudRate = 1870000,
-    this.dataBits = 8,
-    this.stopBits = 1,
-    this.parity = 0,
-    this.flowControl = 0,
-  });
-
-  final int baudRate;
-  final int dataBits;
-  final int stopBits;
-  final int parity;
-  final int flowControl;
-}
-
-/// 串口异常。
-class SerialServiceException implements Exception {
-  const SerialServiceException(this.message);
-
-  final String message;
-
-  @override
-  String toString() => 'SerialServiceException: $message';
-}
+import 'serial_config.dart';
 
 /// 外部调用方需要实现的串口接口。
 ///
-/// [CrsfSession] 通过此接口与底层串口解耦，使用方在构造 [CrsfSession]
-/// 时传入自己的实现。
+/// [CrsfSession] 通过此接口与底层串口解耦，使用方在构造会话时传入自己的实现。
 abstract interface class SerialPort {
   /// 是否已连接。
   bool get isConnected;
