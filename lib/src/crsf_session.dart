@@ -408,7 +408,7 @@ class CrsfSession {
     requestField(fieldId: 1, deviceId: deviceId, chunk: chunk);
   }
 
-  Future<List<ElrsField>> loadAllTxSettings({
+  Future<List<ElrsField>> loadDeviceSettings({
     int deviceId = crsfAddressTxModule,
     Duration timeout = const Duration(milliseconds: 100),
     void Function(int loaded, int total)? onProgress,
@@ -489,7 +489,7 @@ class CrsfSession {
     Duration timeout = const Duration(milliseconds: 100),
     void Function(int loaded, int total)? onProgress,
   }) {
-    return loadAllTxSettings(
+    return loadDeviceSettings(
       deviceId: deviceId,
       timeout: timeout,
       onProgress: onProgress,
@@ -768,7 +768,7 @@ class CrsfSession {
 
     _isReloadingAllSettingsAfterWrite = true;
     try {
-      await loadAllTxSettings(
+      await loadDeviceSettings(
         deviceId: deviceId,
         timeout: const Duration(milliseconds: 200),
       );

@@ -89,8 +89,8 @@ void main() async {
   session.setRcChannels(List<int>.filled(16, rcChannelCenter));
   session.startRcSending();
 
-  // Load all TX settings
-  final fields = await session.loadAllTxSettings();
+  // Load Device settings (Default value is TX 0xEE)
+  final fields = await session.loadDeviceSettings();
   print('Loaded ${fields.length} fields');
 
   await session.dispose();
